@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная карта - Tornado.Watch</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    
+    <style>
+        /* Жестко задаем высоту, чтобы карта 100% появилась на экране */
+        #map-container {
+            width: 100%;
+            height: 750px; /* Высота в пикселях надежнее! */
+            background-color: #050505;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-navbar">
+        <a href="index.html" class="logo-container">
+            <span class="logo-icon">🌪️</span>
+            <span class="logo-text">Tornado.Watch</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="vehicles.html" class="nav-link">Перехватчики</a>
+            <a href="map.html" class="nav-link active">Интерактивная карта</a>
+        </nav>
+    </header>
+
+    <div id="map-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+        // 1. Инициализация. Центрируем на 'Аллее торнадо'
+        const map = L.map('map-container').setView([37.5, -94.0], 6);
+
+        // 2. ВОТ ОНО! Подключаем Спутниковые снимки Esri (World Imagery)
+        // Они грузятся почти при любых блокировках и выглядят очень мрачно и атмосферно
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            maxZoom: 17
+        }).addTo(map);
+
+        // 3. БАЗА ТОРНАДО (Координаты и инфа)
+        const tornadoes = [
+            {
+                name: "Торнадо Трех Штатов (1925)",
+                color: "#ff3333", // Ярко-красный
+                checkpoints: [
+                    { coords: [37.58, -90.93], time: "13:01", title: "Формирование", text: "Мурс-Чапел, Миссури. Начало самого длинного пути в истории.", img: "https://placehold.co/300x200/2b0a0a/ff3333?text=Moores+Chapel" },
+                    { coords: [37.76, -89.33], time: "14:34", title: "Мерфисборо", text: "Максимальные разрушения, рекордное количество жертв.", img: "https://placehold.co/300x200/2b0a0a/ff3333?text=Murphysboro+Ruin" },
+                    { coords: [38.35, -87.56], time: "16:30", title: "Рассеивание", text: "Принстон, Индиана. Шторм утихает после 352 км.", img: "https://placehold.co/300x200/2b0a0a/ff3333?text=End+of+Path" }
+                ]
+            },
+            {
+                name: "Джоплин (2011)",
+                color: "#ffaa00", // Оранжевый
+                checkpoints: [
+                    { coords: [37.05, -94.55], time: "17:34", title: "Западный Джоплин", text: "Формирование и быстрый рост воронки до EF5.", img: "https://placehold.co/300x200/332200/ffaa00?text=Joplin+Start" },
+                    { coords: [37.06, -94.53], time: "17:41", title: "Больница Сент-Джонс", text: "Прямое попадание, многоэтажное здание сдвинуто с фундамента.", img: "https://placehold.co/300x200/332200/ffaa00?text=St.+Johns+Hospital" },
+                    { coords: [37.08, -94.45], time: "18:12", title: "Рассеивание", text: "Шторм теряет силу на выходе из города.", img: "https://placehold.co/300x200/332200/ffaa00?text=Joplin+End" }
+                ]
+            },
+            {
+                name: "Эль-Рино (2013)",
+                color: "#b95cff", // Фиолетовый
+                checkpoints: [
+                    { coords: [35.50, -98.05], time: "18:03", title: "Рождение монстра", text: "Касание земли юго-западнее Эль-Рино.", img: "https://placehold.co/300x200/220033/b95cff?text=El+Reno+Forms" },
+                    { coords: [35.51, -97.96], time: "18:15", title: "Максимальная ширина", text: "Шторм вырастает до 4.2 км в ширину.", img: "https://placehold.co/300x200/220033/b95cff?text=4.2km+Width" },
+                    { coords: [35.53, -97.94], time: "18:23", title: "Трагедия TWISTEX", text: "Внезапная смена курса. Гибель Тима Самараса и его команды.", img: "https://placehold.co/300x200/220033/b95cff?text=TWISTEX+Incident" }
+                ]
+            }
+        ];
+
+        // 4. РИСУЕМ ЛИНИИ И МАРКЕРЫ
+        tornadoes.forEach(tornado => {
+            const pathCoords = tornado.checkpoints.map(cp => cp.coords);
+            
+            // Рисуем цветную линию пути
+            L.polyline(pathCoords, { color: tornado.color, weight: 6, opacity: 0.9 }).addTo(map);
+
+            tornado.checkpoints.forEach(cp => {
+                const popupContent = `
+                    <div class="custom-popup">
+                        <img src="${cp.img}" alt="${cp.title}">
+                        <h4 style="color:${tornado.color};">${cp.time} - ${cp.title}</h4>
+                        <p>${cp.text}</p>
+                    </div>
+                `;
+                
+                // Ставим кружок
+                L.circleMarker(cp.coords, {
+                    color: '#fff', // Белая обводка
+                    fillColor: tornado.color, // Цвет заливки от торнадо
+                    fillOpacity: 1,
+                    radius: 7,
+                    weight: 2
+                }).addTo(map).bindPopup(popupContent);
+            });
+        });
+    </script>
+</body>
+</html>
