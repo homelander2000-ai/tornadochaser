@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анатомия Монстра - Tornado.Watch</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="top-navbar">
+    <a href="index.html" class="logo-container">
+        <span class="logo-icon">🌪️</span>
+        <span class="logo-text">Tornado.Watch</span>
+    </a>
+    
+    <div class="hamburger" id="hamburger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-links" id="nav-menu">
+        <a href="index.html" class="nav-link active">Главная</a>
+        <a href="vehicles.html" class="nav-link">Перехватчики</a>
+        <a href="map.html" class="nav-link">Интерактивная карта</a>
+        <a href="anatomy.html" class="nav-link">Анатомия</a>
+    </nav>
+</header>
+
+    <section class="anatomy-section">
+        
+        <div id="tsparticles"></div>
+
+        <div class="container" style="position: relative; z-index: 2; text-align: center;">
+            <h2 class="section-title" style="margin-top: 40px; text-shadow: 0 0 10px rgba(231,76,60,0.5);">Вскрытие Суперселла</h2>
+            <p style="color: #ccc; margin-bottom: 40px; font-size: 1.1rem;">Наведите курсор на красные маркеры, чтобы изучить внутреннюю структуру шторма.</p>
+            
+            <div class="anatomy-diagram">
+                <img src="image/tornadosuper.jpg" alt="Схема Торнадо" class="diagram-img">
+
+                <div class="hotspot" style="top: 75%; left: 44%;">
+                    <div class="hotspot-pulse"></div>
+                    <div class="glass-panel">
+                        <h4>Воронка (Funnel Cloud)</h4>
+                        <p>Зона максимального разрушения. Вращающийся столб воздуха, достигающий земли. Скорость ветра +-400 км/ч.</p>
+                    </div>
+                </div>
+
+                <div class="hotspot" style="top: 30%; left: 55%;">
+                    <div class="hotspot-pulse"></div>
+                    <div class="glass-panel">
+                        <h4>Восходящий поток (Updraft)</h4>
+                        <p>Двигатель шторма. Мощный поток теплого влажного воздуха, который засасывается вверх, питая грозовую ячейку энергией.</p>
+                    </div>
+                </div>
+
+                <div class="hotspot" style="top: 40%; left: 25%;">
+                    <div class="hotspot-pulse"></div>
+                    <div class="glass-panel">
+                        <h4>Зона града (Hail Core)</h4>
+                        <p>Область нисходящего потока. Капли воды замерзают на огромной высоте и падают вниз в виде ледяных глыб, иногда размером с бейсбольный мяч.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> 
+    <footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-brand">
+            <span class="footer-logo-text">Tornado.Watch</span>
+            <p class="copyright">© 2026 Проект мониторинга и исследования экстремальных погодных явлений. Все права защищены.</p>
+        </div>
+
+        <div class="footer-disclaimer">
+            <p><strong> ВНИМАНИЕ:</strong> Данный ресурс создан в образовательных целях. Мы не являемся официальным метеорологическим агентством. В случае реальной угрозы торнадо всегда следуйте указаниям местных экстренных служб и Национальной метеорологической службы (NWS/NOAA).</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Связь и источники</h4>
+            <ul>
+                <li><a href="https://www.spc.noaa.gov/" target="_blank">Радар NOAA</a></li>
+            </ul>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-basic"></script>
+    <script>
+        // Настройка летящего "пепла"
+        tsParticles.load("tsparticles", {
+            background: { color: { value: "transparent" } },
+            particles: {
+                color: { value: ["#ffffff", "#ff4444", "#888888"] }, // Цвета частиц
+                move: { 
+                    enable: true, 
+                    speed: 2, 
+                    direction: "right", // Ветер дует вправо
+                    straight: false 
+                },
+                number: { value: 80 }, // Количество мусора
+                opacity: { value: 0.5 },
+                size: { value: { min: 1, max: 4 } }
+            }
+        });
+    </script>
+</body>
+</html>

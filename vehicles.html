@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Автопарк - Tornado.Watch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="top-navbar">
-        <a href="index.html" class="logo-container">
-            <span class="logo-icon">🌪️</span>
-            <span class="logo-text">Tornado.Watch</span>
-        </a>
-        <nav class="nav-links">
-            <a href="index.html" class="nav-link">Главная</a>
-            <a href="vehicles.html" class="nav-link active">Перехватчики</a>
-            <a href="map.html" class="nav-link">Интерактивная карта</a>
-        </nav>
-    </header>
+   <header class="top-navbar">
+    <a href="index.html" class="logo-container">
+        <span class="logo-icon">🌪️</span>
+        <span class="logo-text">Tornado.Watch</span>
+    </a>
+    
+    <div class="hamburger" id="hamburger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-links" id="nav-menu">
+        <a href="index.html" class="nav-link active">Главная</a>
+        <a href="vehicles.html" class="nav-link">Перехватчики</a>
+        <a href="map.html" class="nav-link">Интерактивная карта</a>
+        <a href="anatomy.html" class="nav-link">Анатомия</a>
+    </nav>
+</header>
 
     <section class="section">
         <h2 class="section-title">Автопарк перехватчиков</h2>
@@ -27,7 +35,7 @@
         <div class="cards-grid">
             
             <div class="vehicle-card">
-                <img src="tiv2.png" alt="TIV-2">
+                <img src="image/tiv2.png" alt="TIV-2">
                 <div class="vehicle-info">
                     <h3>TIV-2</h3>
                     <p><strong>Броня:</strong> Алюминий, кевлар, сталь, поликарбонат.</p>
@@ -36,7 +44,7 @@
             </div>
 
             <div class="vehicle-card">
-                <img src="dominator3.png" alt="Dominator 3">
+                <img src="image/dominator3.png" alt="Dominator 3">
                 <div class="vehicle-info">
                     <h3>Dominator 3</h3>
                     <p><strong>Броня:</strong> Толстый сварной стальной панцирь.</p>
@@ -45,7 +53,7 @@
             </div>
 
             <div class="vehicle-card">
-                <img src="mobile mesonet weather scout vehicle.png" alt="Скауты">
+                <img src="image/mobile mesonet weather scout vehicle.png" alt="mobilemesonet">
                 <div class="vehicle-info">
                     <h3>Скауты (Mobile Mesonet)</h3>
                     <p><strong>Броня:</strong> Заводская + защитные решетки.</p>
@@ -65,6 +73,27 @@
             </ul>
         </div>
     </section>
+    <footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-brand">
+            <span class="footer-logo-text">Tornado.Watch</span>
+            <p class="copyright">© 2026 Проект мониторинга и исследования экстремальных погодных явлений. Все права защищены.</p>
+        </div>
+
+        <div class="footer-disclaimer">
+            <p><strong> ВНИМАНИЕ:</strong> Данный ресурс создан в образовательных целях. Мы не являемся официальным метеорологическим агентством. В случае реальной угрозы торнадо всегда следуйте указаниям местных экстренных служб и Национальной метеорологической службы (NWS/NOAA).</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Связь и источники</h4>
+            <ul>
+                <li><a href="https://www.spc.noaa.gov/" target="_blank">Радар NOAA</a></li>
+            </ul>
+        </div>
+        
+    </div>
+</footer>
 
 </body>
 </html>

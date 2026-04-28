@@ -4,23 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tornado.Watch - Хроники Разрушений</title>   
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-    </body>
-</html>
+    </body> <div id="ticker-bar" class="ticker-wrapper status-safe">
+    <div id="ticker-content" class="ticker-text">
+        Загрузка метеоданных...
+    </div>
+</div>
 
-    <header class="top-navbar">
+<script src="js/script.js"></script>
+</html> 
+
+   <header class="top-navbar">
     <a href="index.html" class="logo-container">
         <span class="logo-icon">🌪️</span>
         <span class="logo-text">Tornado.Watch</span>
     </a>
     
-    <nav class="nav-links">
+    <div class="hamburger" id="hamburger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-links" id="nav-menu">
         <a href="index.html" class="nav-link active">Главная</a>
         <a href="vehicles.html" class="nav-link">Перехватчики</a>
-        <a href="map.html" class="nav-link">Интерактивная карта</a> 
+        <a href="map.html" class="nav-link">Интерактивная карта</a>
+        <a href="anatomy.html" class="nav-link">Анатомия</a>
     </nav>
-</header> 
+</header>
 <section class="live-monitor" style="text-align: center;">
     <div class="container">
         <h2 style="color: #fff; margin-bottom: 15px; font-size: 2rem;">Официальный мониторинг</h2>
@@ -91,7 +104,7 @@
     <div class="cards-grid">
         
         <div class="tornado-card">
-            <img src="tornado1.png" alt="Торнадо Трех Штатов">
+            <img src="image/tornado1.png" alt="Торнадо Трех Штатов">
             <div class="tornado-info">
                 <h3>Торнадо «Трех штатов» (1925)</h3>
                 <p><strong>Длина пути:</strong> 352 км (рекорд)</p>
@@ -101,7 +114,7 @@
         </div>
 
         <div class="tornado-card">
-            <img src="tornado2.png" alt="Джоплин">
+            <img src="image/tornado2.png" alt="Джоплин">
             <div class="tornado-info">
                 <h3>Джоплин, Миссури (2011)</h3>
                 <p><strong>Категория:</strong> EF5</p>
@@ -111,7 +124,7 @@
         </div>
 
         <div class="tornado-card">
-            <img src="tornado3.png" alt="Эль-Рино">
+            <img src="image/tornado3.png" alt="Эль-Рино">
             <div class="tornado-info">
                 <h3>Эль-Рино, Оклахома (2013)</h3>
                 <p><strong>Ширина:</strong> 4.2 км (рекорд)</p>
@@ -129,7 +142,7 @@
     <div class="feature-section">
         
         <div class="feature-image">
-            <img src="interceptor.png" alt="Автомобиль перехватчик">
+            <img src="image/interceptor.png" alt="Автомобиль перехватчик">
         </div>
 
         <div class="feature-text">
@@ -156,9 +169,27 @@
 </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Исследование Торнадо</p>
-    </footer>
+    <footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-brand">
+            <span class="footer-logo-text">Tornado.Watch</span>
+            <p class="copyright">© 2026 Любительский проект мониторинга, иследования, экстремальных природных явлений, сделан ЛИШЬ в образовательных целях.</p>
+        </div>
+
+        <div class="footer-disclaimer">
+            <p><strong> ВНИМАНИЕ:</strong> Данный ресурс создан в образовательных целях. Разработчик сайта не является официальным метеорологическим исследователем ( ученым ). В случае реальной угрозы торнадо всегда следуйте указаниям местных экстренных служб и Национальной метеорологической службы (NWS/NOAA).</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Связь и источники</h4>
+            <ul>
+                <li><a href="https://www.spc.noaa.gov/" target="_blank">Радар NOAA</a></li>
+            </ul>
+        </div>
+        
+    </div>
+</footer>
 
     <script>
         function toggleEF(header) {

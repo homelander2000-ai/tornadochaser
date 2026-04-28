@@ -1,0 +1,741 @@
+/* =========================================
+   1. БАЗОВЫЕ НАСТРОЙКИ И ЦВЕТА
+   ========================================= */
+:root {
+    --bg-color: #101010;
+    --primary-bg: #1a1a1a;
+    --text-color: #e0e0e0;
+    --accent-color: #e74c3c;
+    --secondary-accent: #c0392b;
+    --card-border: #333;
+    --nav-bg: #050505;
+    --hero-overlay: rgba(0, 0, 0, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================
+   2. ВЕРХНЯЯ ПАНЕЛЬ (НАВИГАЦИЯ)
+   ========================================= */
+.top-navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--nav-bg);
+    padding: 15px 30px;
+    border-bottom: 1px solid #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: -1px 0px 0px #00a8ff, 1px 0px 0px #ff0000; /* Глитч-эффект */
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    color: #888888;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff;
+}
+
+/* =========================================
+   3. ГЛАВНЫЙ ЭКРАН (HERO) И БАЗОВЫЕ СЕКЦИИ
+   ========================================= */
+.hero {
+    height: 50vh;
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url('https://placehold.co/1920x1080/050505/ffffff?text=Tornado+Force') center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h2 { font-size: 3rem; margin-bottom: 0.5rem; color: white;}
+.hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 1.5rem; color: #ccc;}
+
+.btn-check-tornadoes {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-check-tornadoes:hover { background-color: var(--secondary-accent); }
+
+.section {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+/* =========================================
+   4. СЕТКА КАРТОЧЕК (ШКАЛА ФУДЗИТЫ)
+   ========================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-card {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    border-color: var(--accent-color);
+}
+
+.info-card h3 { color: #fff; margin-bottom: 10px; font-size: 1.4rem; }
+.info-card p { color: #ccc; font-size: 1rem; margin-bottom: 10px;}
+
+/* =========================================
+   5. СЕКЦИЯ КОНТЕНТА С КАРТИНКОЙ (ДОМИНАТОР)
+   ========================================= */
+.feature-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    background-color: var(--primary-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    margin: 40px 0;
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 450px; /* Жесткое ограничение ширины картинки */
+    flex-shrink: 0;
+}
+
+.feature-image img {
+    width: 100%;
+    max-height: 350px; /* Жесткое ограничение высоты картинки */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.feature-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.feature-text h2 { color: var(--accent-color); margin-bottom: 15px; font-size: 1.8rem; }
+.feature-text h3 { color: #fff; margin-top: 20px; margin-bottom: 10px; font-size: 1.3rem; }
+.feature-text p { color: #ccc; font-size: 1.1rem; line-height: 1.7; margin-bottom: 15px; }
+.feature-text ul { color: #ccc; margin-left: 20px; font-size: 1.1rem; line-height: 1.6; }
+.feature-text li { margin-bottom: 8px; }
+
+/* =========================================
+   6. КРАСНЫЙ БЛОК ПАМЯТИ (ЭЛЬ-РЕНО)
+   ========================================= */
+.tragedy-memo {
+    background-color: #2b0a0a;
+    border-left: 5px solid #ff4444;
+    padding: 20px 25px;
+    margin: 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.1);
+}
+
+.tragedy-memo h4 {
+    margin: 0 0 15px 0;
+    color: #ff4444;
+    font-size: 1.4rem;
+}
+
+.tragedy-memo p {
+    color: #e0e0e0;
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+.tragedy-memo p:last-child { margin-bottom: 0; }
+/* =========================================
+   УНИВЕРСАЛЬНАЯ КРАСНАЯ КНОПКА
+   ========================================= */
+.red-action-btn {
+    display: inline-block;
+    background-color: var(--accent-color); /* Наш фирменный красный */
+    color: #ffffff !important; /* !important убивает синий цвет браузера */
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none !important; /* Убираем подчеркивание */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Эффект при наведении (hover) */
+.red-action-btn:hover {
+    background-color: var(--secondary-accent); /* Цвет становится темнее */
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.6); /* Добавляем крутое красное свечение */
+    transform: translateY(-2px); /* Кнопка слегка приподнимается */ 
+}
+
+
+/* =========================================
+   8. СТРАНИЦА АВТОПАРКА И ПАМЯТКА
+   ========================================= */
+
+/* Карточка машины */
+.vehicle-card {
+    background-color: var(--primary-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden; /* Чтобы картинка не вылезала за скругленные углы */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Фотка машины внутри карточки */
+.vehicle-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Идеально обрезает фото под один размер */
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none; /* Убираем стандартную тень картинок */
+}
+
+/* Текст под фоткой */
+.vehicle-info {
+    padding: 20px;
+}
+
+.vehicle-info h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.vehicle-info p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* ТОТ САМЫЙ КРАСНЫЙ СВЕТЯЩИЙСЯ ЭФФЕКТ */
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    /* Внешнее красное свечение + легкое внутреннее свечение */
+    box-shadow: 0 0 25px rgba(231, 76, 60, 0.5), inset 0 0 10px rgba(231, 76, 60, 0.2);
+}
+
+/* ПАМЯТКА ПО ВЫЖИВАНИЮ (Знак опасности) */
+.survival-memo {
+    background-color: #1a1500; /* Темно-желтый/предупреждающий фон */
+    border-left: 5px solid #f39c12; /* Оранжевая полоса */
+    padding: 25px 30px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.05);
+}
+
+.survival-memo h4 {
+    margin: 0 0 20px 0;
+    color: #f39c12;
+    font-size: 1.5rem;
+}
+
+.survival-list {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-left: 20px;
+}
+
+.survival-list li {
+    margin-bottom: 15px;
+}
+
+.survival-list li strong {
+    color: #fff;
+}
+/* =========================================
+   9. КАРТОЧКИ ИСТОРИЧЕСКИХ ТОРНАДО
+   ========================================= */
+.tornado-card {
+    background-color: var(--primary-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden; 
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.tornado-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Картинки будут идеально ровными */
+    border-radius: 0;
+    margin: 0;
+}
+
+.tornado-info {
+    padding: 20px;
+}
+
+.tornado-info h3 {
+    color: var(--accent-color); /* Сделаем заголовки красными для мрачности */
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.tornado-info p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.tornado-info strong {
+    color: #fff;
+}
+
+/* КРАСНОЕ СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ (как у машин) */
+.tornado-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 25px rgba(231, 76, 60, 0.5), inset 0 0 10px rgba(231, 76, 60, 0.2);
+}
+/* =========================================
+   10. СТИЛИ ДЛЯ ИНТЕРАКТИВНОЙ КАРТЫ
+   ========================================= */
+
+/* Перебиваем стандартные белые окна Leaflet */
+.leaflet-popup-content-wrapper {
+    background-color: var(--primary-bg) !important;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px !important;
+    padding: 0 !important;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--accent-color) !important;
+}
+
+/* Наш кастомный контент внутри окна */
+.custom-popup {
+    width: 250px;
+    padding: 10px;
+}
+
+.custom-popup img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.custom-popup h4 {
+    color: var(--accent-color);
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    font-family: sans-serif;
+}
+
+.custom-popup p {
+    color: #e0e0e0;
+    margin: 0;
+    font-size: 0.95rem;
+    font-family: sans-serif;
+    line-height: 1.4;
+}
+/* =========================================
+   11. АНАТОМИЯ ТОРНАДО (С ЧАСТИЦАМИ И СТЕКЛОМ)
+   ========================================= */
+
+/* Секция на весь экран */
+.anatomy-section {
+    position: relative;
+    min-height: 80vh;
+    overflow: hidden; /* Чтобы частицы не вылетали за пределы */
+    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+    padding-bottom: 50px;
+}
+
+/* Контейнер частиц должен быть на заднем плане */
+#tsparticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Контейнер самой картинки */
+.anatomy-diagram {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.diagram-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* =========================================
+   ИНТЕРАКТИВНЫЕ МАРКЕРЫ (ХОТСПОТЫ)
+   ========================================= */
+.hotspot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%); /* Центруем точку точно по координатам */
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Красная пульсирующая точка */
+.hotspot-pulse {
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: anatomyPulse 1.5s infinite;
+}
+
+@keyframes anatomyPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+    70% { transform: scale(1.2); box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+/* =========================================
+   СТЕКЛЯННЫЕ ПАНЕЛИ (GLASSMORPHISM)
+   ========================================= */
+.glass-panel {
+    position: absolute;
+    top: -10px;
+    left: 40px; /* Панель появляется справа от точки */
+    width: 280px;
+    background: rgba(20, 20, 20, 0.75); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(12px); /* Эффект матового стекла (размытие фона за панелью) */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--accent-color);
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: left;
+    
+    /* Анимация скрытия/появления */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    pointer-events: none; /* Чтобы мышка не цеплялась за скрытую панель */
+}
+
+/* При наведении на маркер - показываем панель */
+.hotspot:hover .glass-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.glass-panel h4 {
+    margin: 0 0 10px 0;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.glass-panel p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ddd;
+}
+/* =========================================
+   12. ЖИВОЙ ТИКЕР (API NOAA)
+   ========================================= */
+.ticker-wrapper {
+    width: 100%;
+    height: 35px;
+    overflow: hidden; /* Прячем текст, который выходит за границы */
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Цвет, когда всё спокойно */
+.status-safe {
+    background-color: #1b5e20; /* Темно-зеленый */
+    color: #a5d6a7;
+    border-bottom: 1px solid #2e7d32;
+}
+
+/* Цвет, когда есть угроза */
+.status-danger {
+    background-color: #b71c1c; /* Ярко-красный */
+    color: #fff;
+    border-bottom: 1px solid #f44336;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.4);
+}
+
+.ticker-text {
+    white-space: nowrap;
+    padding-left: 100%; /* Начальная позиция текста за экраном */
+    animation: ticker-animation 25s linear infinite;
+}
+
+/* Анимация движения текста влево */
+@keyframes ticker-animation {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* Остановка анимации при наведении (чтобы удобно было читать) */
+.ticker-wrapper:hover .ticker-text {
+    animation-play-state: paused;
+}
+/* =========================================
+   13. ЕДИНЫЙ ПОДВАЛ (FOOTER)
+   ========================================= */
+.main-footer {
+    background-color: #080808; /* Почти черный, темнее основного фона */
+    border-top: 1px solid var(--card-border);
+    padding: 40px 20px 30px; /* Отступы сверху, по бокам и снизу */
+    margin-top: 60px; /* Отталкиваем подвал от контента сайта */
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Чтобы на мобилках блоки падали друг под друга */
+    gap: 30px;
+}
+
+/* Левая часть */
+.footer-brand {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: -1px 0px 0px #00a8ff, 1px 0px 0px #ff0000;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    color: #888;
+    line-height: 1.5;
+}
+
+/* Центральная часть: Дисклеймер */
+.footer-disclaimer {
+    flex: 1.5; /* Даем дисклеймеру чуть больше места */
+    min-width: 300px;
+    background-color: rgba(231, 76, 60, 0.05); /* Легкая красная заливка */
+    border-left: 3px solid var(--accent-color);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.footer-disclaimer p {
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.footer-disclaimer strong {
+    color: var(--accent-color);
+}
+
+/* Правая часть: Ссылки */
+.footer-links {
+    flex: 0.8;
+    min-width: 200px;
+}
+
+.footer-links h4 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* =========================================
+   14. АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ (БУРГЕР-МЕНЮ)
+   ========================================= */
+
+/* Изначально прячем бургер на компьютерах */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Рисуем три полоски бургера */
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+/* ВКЛЮЧАЕМ МОБИЛЬНЫЙ РЕЖИМ (Экраны меньше 768px) */
+@media (max-width: 768px) {
+    .top-navbar {
+        justify-content: space-between; /* Расталкиваем логотип и бургер по краям */
+    }
+
+    .logo-container {
+        margin-right: 0; /* Убираем отступ логотипа на мобилках */
+    }
+
+    .hamburger {
+        display: flex; /* Показываем бургер */
+    }
+
+    /* Прячем меню и делаем его выезжающим */
+    .nav-links {
+        position: absolute;
+        top: 65px; /* Опускаем меню ровно под шапку */
+        left: -100%; /* Прячем всё меню за левым краем экрана */
+        flex-direction: column;
+        background-color: var(--nav-bg);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s; /* Плавный выезд */
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    
+    .nav-links.active {
+        left: 0; 
+    }
+
+    .nav-link {
+        margin: 15px 0;
+        display: block;
+        font-size: 1.2rem; 
+    }
+
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0; 
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}

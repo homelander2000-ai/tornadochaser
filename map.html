@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивная карта - Tornado.Watch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     
@@ -20,17 +20,25 @@
 </head>
 <body>
 
-    <header class="top-navbar">
-        <a href="index.html" class="logo-container">
-            <span class="logo-icon">🌪️</span>
-            <span class="logo-text">Tornado.Watch</span>
-        </a>
-        <nav class="nav-links">
-            <a href="index.html" class="nav-link">Главная</a>
-            <a href="vehicles.html" class="nav-link">Перехватчики</a>
-            <a href="map.html" class="nav-link active">Интерактивная карта</a>
-        </nav>
-    </header>
+   <header class="top-navbar">
+    <a href="index.html" class="logo-container">
+        <span class="logo-icon">🌪️</span>
+        <span class="logo-text">Tornado.Watch</span>
+    </a>
+    
+    <div class="hamburger" id="hamburger-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <nav class="nav-links" id="nav-menu">
+        <a href="index.html" class="nav-link active">Главная</a>
+        <a href="vehicles.html" class="nav-link">Перехватчики</a>
+        <a href="map.html" class="nav-link">Интерактивная карта</a>
+        <a href="anatomy.html" class="nav-link">Анатомия</a>
+    </nav>
+</header>
 
     <div id="map-container"></div>
 
@@ -102,7 +110,7 @@
                     weight: 2
                 }).addTo(map).bindPopup(popupContent);
             });
-        });
+        }); 
     </script>
 </body>
 </html>
