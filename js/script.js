@@ -34,22 +34,24 @@ checkTornadoAlerts();
 // Обновляем данные каждые 5 минут (300 000 миллисекунд), чтобы инфа была свежей
 setInterval(checkTornadoAlerts, 300000);
 
-// БУРГЕР-МЕНЮ (Адаптация)
+// бурхэээр меню 
 
-const hamburger = document.getElementById('hamburger-menu');
-const navMenu = document.getElementById('nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
 
-// Проверяем, есть ли на странице эти элементы (чтобы не было ошибок)
-if (hamburger && navMenu) {
-    // При клике на бургер добавляем/убираем класс 'active'
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    // Проверяем, нашел ли скрипт наше меню
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-    // Когда кликаем по любой ссылке в меню — закрываем его
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }));
-}
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    } else {
+        console.log("Ошибка: Бургер или меню не найдены в HTML!");
+    }
+});

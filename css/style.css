@@ -704,19 +704,19 @@ img {
     }
 
     /* Прячем меню и делаем его выезжающим */
-    .nav-links {
-        position: absolute;
-        top: 65px; /* Опускаем меню ровно под шапку */
-        left: -100%; /* Прячем всё меню за левым краем экрана */
-        flex-direction: column;
-        background-color: var(--nav-bg);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s; /* Плавный выезд */
-        padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-
+.nav-links {
+    position: absolute;
+    top: 65px; 
+    left: -100%; 
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s; 
+    padding: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    z-index: 9999; /* <-- ВОТ ЭТУ СТРОЧКУ ДОБАВЬ ОБЯЗАТЕЛЬНО */
+}
     
     .nav-links.active {
         left: 0; 
